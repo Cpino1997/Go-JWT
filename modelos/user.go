@@ -5,7 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// La estructura de nuestro usuario
+// User La estructura de nuestro usuario
 type User struct {
 	gorm.Model
 	Nombre   string `json:"nombre"`
@@ -14,7 +14,7 @@ type User struct {
 	Password string `json:"password"`
 }
 
-// Estructura de la actualizacion del usuario
+// UpdateUsuario Estructura de la actualizacion del usuario
 type UpdateUsuario struct {
 	gorm.Model
 	Nombre   string `json:"nombre" binding:"required"`
@@ -23,7 +23,7 @@ type UpdateUsuario struct {
 	Password string `json:"password"`
 }
 
-// Funcion que recibe un usuario y le encripta la constraseña
+// HashPassword Funcion que recibe un usuario y le encripta la constraseña
 func (user *User) HashPassword(password string) error {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	if err != nil {
@@ -33,7 +33,7 @@ func (user *User) HashPassword(password string) error {
 	return nil
 }
 
-// Funcion para Checkear la password Encriptada
+// CheckPassword Funcion para Checkear la password Encriptada
 func (user *User) CheckPassword(providedPassword string) error {
 	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(providedPassword))
 	if err != nil {
@@ -42,7 +42,7 @@ func (user *User) CheckPassword(providedPassword string) error {
 	return nil
 }
 
-//Funcion para Encriptar la contraseña actualizada del usuario
+// UpdateHashPassword Funcion para Encriptar la contraseña actualizada del usuario
 func (u *UpdateUsuario) UpdateHashPassword(password string) error {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	if err != nil {
@@ -52,7 +52,7 @@ func (u *UpdateUsuario) UpdateHashPassword(password string) error {
 	return nil
 }
 
-// Funcion para Checkear la encriptacion de la nueva contraseña
+// UpdateCheckPassword Funcion para Checkear la encriptacion de la nueva contraseña
 func (u *UpdateUsuario) UpdateCheckPassword(providedPassword string) error {
 	err := bcrypt.CompareHashAndPassword([]byte(u.Password), []byte(providedPassword))
 	if err != nil {

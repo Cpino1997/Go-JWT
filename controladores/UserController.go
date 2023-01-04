@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// Registrar Usuarios
+// RegisterUser Registrar Usuarios
 func RegisterUser(context *gin.Context) {
 	var user modelos.User
 	// Recibimos la req en formato json
@@ -35,7 +35,7 @@ func RegisterUser(context *gin.Context) {
 	context.JSON(http.StatusCreated, gin.H{"id": user.ID, "correo": user.Correo, "nombre de usuario": user.Usuario})
 }
 
-// Obtener Todos los usuarios
+// GetUsuarios Obtener Todos los usuarios
 func GetUsuarios(context *gin.Context) {
 	// Creamos la Instancia de la bd
 	db, err := gorm.Open(config.Instance.Config)
@@ -54,7 +54,7 @@ func GetUsuarios(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{"data": users})
 }
 
-// Actualizar usuarios
+// UpdateUser Actualizar usuarios
 func UpdateUser(c *gin.Context) {
 	// Obtener el usuario
 	var user modelos.User
@@ -78,7 +78,7 @@ func UpdateUser(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"Nuevos Datos": input})
 }
 
-// Borrar Usuarios
+// BorrarUser Borrar Usuarios
 func BorrarUser(c *gin.Context) {
 	// Declaramos el usuario
 	var user modelos.User

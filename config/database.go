@@ -8,16 +8,17 @@ import (
 	"gorm.io/gorm"
 )
 
-// Declaramos a GORM
+// Instance Declaramos a GORM
 var Instance *gorm.DB
 var dbError error
 
-// Funcion para conectar la base de datoss
+// Connect Funcion para conectar la base de datoss
 func Connect(connectionString string) {
 	Instance, dbError = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if dbError != nil {
 		log.Fatal(dbError)
 		panic("No ha sido posible conectarse a la base de datos")
+
 	}
 	log.Println("Conectado a la base de datos!")
 }

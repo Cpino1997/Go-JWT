@@ -48,6 +48,9 @@ func initRouter() *gin.Engine {
 			secured.PUT("/users/:id", controladores.UpdateUser)
 			// Eliminar un usuario
 			secured.DELETE("/users/:id", controladores.BorrarUser)
+			//Get trabajadores
+			secured.GET("/trabajadores", controladores.GetTrabajadores)
+			secured.POST("/trabajadores", controladores.CrearTrabajadores)
 		}
 	}
 	return router
