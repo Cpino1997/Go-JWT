@@ -12,7 +12,7 @@ import (
 var Instance *gorm.DB
 var dbError error
 
-// Funcion para conectar la base de datos
+// Funcion para conectar la base de datoss
 func Connect(connectionString string) {
 	Instance, dbError = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if dbError != nil {
