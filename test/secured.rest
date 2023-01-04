@@ -1,0 +1,5 @@
+@host = localhost:8080
+// Access a Secured API Endpoint
+GET http://{{host}}/api/users HTTP/1.1
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoicGlub2xhYnMiLCJjb3JyZW8iOiJtdWtlc2hAZ28uY29tIiwiZXhwIjoxNjcyNzg0MDM0fQ.O0l-5s9qQKOrsBUYJLTgBzRfbZgSdh9EWbKtSu_nvjQ

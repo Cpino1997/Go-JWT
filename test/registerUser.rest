@@ -1,0 +1,11 @@
+@host = localhost:8080
+// Register User
+POST http://{{host}}/api/user/registro HTTP/1.1
+content-type: application/json
+    
+{
+    "nombre": "Mukesh juan",
+    "usuario": "pinolabs",
+    "correo": "mukesh@go.com",
+    "password": "holanda"
+}
